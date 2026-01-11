@@ -5,24 +5,6 @@
     <title>Opel Insignia</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<script>
-function butonTiklandi() {
-    // Yazı
-    document.getElementById("sonuc").innerHTML = "🚗 Modifiye AKTİF! +30 HP";
-
-    // Arka plan titreşim
-    document.body.classList.add("shake");
-    setTimeout(() => {
-        document.body.classList.remove("shake");
-    }, 400);
-
-    // Egzoz sesi
-    let ses = document.getElementById("egzoz");
-    ses.currentTime = 0;
-    ses.play();
-}
-</script>
-
 <body>
 
 <header>
@@ -53,26 +35,43 @@ function butonTiklandi() {
 
 <section class="mods">
     <h2>Modifiye Seçenekleri</h2>
-<button
-<audio id="egzoz">
-    <source src="exhaust.mp3" type="audio/mpeg">
-</audio>
-
- class="action-btn" onclick="butonTiklandi()">
-    MODİFİYEYİ AKTİF ET
-</button>
-
-<p id="sonuc"></p>
 
     <div class="mod-card">Stage 1 Yazılım</div>
     <div class="mod-card">Downpipe + Egzoz</div>
     <div class="mod-card">Intercooler</div>
     <div class="mod-card">Coilover Süspansiyon</div>
+
+    <br><br>
+
+    <button class="action-btn" onclick="butonTiklandi()">
+        MODİFİYEYİ AKTİF ET
+    </button>
+
+    <p id="sonuc"></p>
+
+    <audio id="egzoz">
+        <source src="exhaust.mp3" type="audio/mpeg">
+    </audio>
 </section>
 
 <footer>
     © 2026 Opel Insignia Fan Site
 </footer>
+
+<script>
+function butonTiklandi() {
+    document.getElementById("sonuc").innerHTML = "🚗 Modifiye AKTİF! +30 HP";
+
+    document.body.classList.add("shake");
+    setTimeout(() => {
+        document.body.classList.remove("shake");
+    }, 400);
+
+    let ses = document.getElementById("egzoz");
+    ses.currentTime = 0;
+    ses.play();
+}
+</script>
 
 </body>
 </html>
