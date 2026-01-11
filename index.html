@@ -2,76 +2,73 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Opel Insignia</title>
+    < title>Opel Insignia Performance Simulator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
+<!-- LOADING -->
+<div id="loading">
     <h1>OPEL INSIGNIA</h1>
-    <p>Güç • Konfor • Alman Mühendisliği</p>
+    <p>Performance Simulator</p>
+</div>
+
+<header>
+    <h1>Opel Insignia</h1>
+    <p>Modifiye Simülasyonu</p>
 </header>
 
 <nav>
-    <a href="#">Ana Sayfa</a>
-    <a href="#">Teknik</a>
-    <a href="#">Modifiye</a>
-    <a href="#">Galeri</a>
+    <button onclick="temaDegistir()">🌙 / ☀️</button>
+    <button onclick="tamEkran()">⛶</button>
 </nav>
 
-<section class="hero">
-    <h2>2.0 Turbo Sport Sedan</h2>
-    <p>260 HP • AWD • 0-100: 6.5 sn</p>
+<main>
+
+<section class="card">
     <img src="insignia.jpg" alt="Opel Insignia">
 </section>
 
-<section class="info">
-    <h2>Teknik Özellikler</h2>
-    <p><b>Motor:</b> 2.0 Turbo</p>
-    <p><b>Güç:</b> 260 HP</p>
-    <p><b>Şanzıman:</b> Otomatik</p>
-    <p><b>Çekiş:</b> AWD</p>
+<section class="card stage">
+    <h2>Stage Seç</h2>
+    <button onclick="stageSec(1)">Stage 1</button>
+    <button onclick="stageSec(2)">Stage 2</button>
 </section>
 
-<section class="mods">
-    <h2>Modifiye Seçenekleri</h2>
-
-    <div class="mod-card">Stage 1 Yazılım</div>
-    <div class="mod-card">Downpipe + Egzoz</div>
-    <div class="mod-card">Intercooler</div>
-    <div class="mod-card">Coilover Süspansiyon</div>
-
-    <br><br>
-
-    <button class="action-btn" onclick="butonTiklandi()">
-        MODİFİYEYİ AKTİF ET
-    </button>
-
-    <p id="sonuc"></p>
-
-    <audio id="egzoz">
-        <source src="exhaust.mp3" type="audio/mpeg">
-    </audio>
+<section class="card action">
+    <button onclick="modifiyeBaslat()">🚀 Gaz Ver</button>
 </section>
 
-<footer>
-    © 2026 Opel Insignia Fan Site
-</footer>
+<section class="card gosterge">
+    <div class="rpm">
+        <div id="rpmBar"></div>
+    </div>
 
-<script>
-function butonTiklandi() {
-    document.getElementById("sonuc").innerHTML = "🚗 Modifiye AKTİF! +30 HP";
+    <div id="alev">🔥</div>
 
-    document.body.classList.add("shake");
-    setTimeout(() => {
-        document.body.classList.remove("shake");
-    }, 400);
+    <p>Hız: <span id="hiz">0</span> km/h</p>
 
-    let ses = document.getElementById("egzoz");
-    ses.currentTime = 0;
-    ses.play();
-}
-</script>
+    <div class="grafik">
+        <div id="bar"></div>
+    </div>
 
+    <canvas id="chart" width="320" height="150"></canvas>
+
+    <div id="direksiyon">🛞</div>
+
+    <p id="sonuc">Stage seçilmedi</p>
+</section>
+
+</main>
+
+<div id="toast"></div>
+
+<div id="debug">
+    Stage: <span id="dStage"></span><br>
+    RPM: <span id="dRpm"></span><br>
+    Hız: <span id="dHiz"></span>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
