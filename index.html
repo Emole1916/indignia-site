@@ -7,7 +7,19 @@
 </head>
 <script>
 function butonTiklandi() {
+    // Yazı
     document.getElementById("sonuc").innerHTML = "🚗 Modifiye AKTİF! +30 HP";
+
+    // Arka plan titreşim
+    document.body.classList.add("shake");
+    setTimeout(() => {
+        document.body.classList.remove("shake");
+    }, 400);
+
+    // Egzoz sesi
+    let ses = document.getElementById("egzoz");
+    ses.currentTime = 0;
+    ses.play();
 }
 </script>
 
@@ -41,7 +53,12 @@ function butonTiklandi() {
 
 <section class="mods">
     <h2>Modifiye Seçenekleri</h2>
-<button class="action-btn" onclick="butonTiklandi()">
+<button
+<audio id="egzoz">
+    <source src="exhaust.mp3" type="audio/mpeg">
+</audio>
+
+ class="action-btn" onclick="butonTiklandi()">
     MODİFİYEYİ AKTİF ET
 </button>
 

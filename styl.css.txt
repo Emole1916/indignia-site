@@ -130,3 +130,14 @@ footer {
     from { text-shadow: 0 0 5px lime; }
     to { text-shadow: 0 0 20px lime; }
 }
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(5px, 0); }
+    50%  { transform: translate(-5px, 0); }
+    75%  { transform: translate(5px, 0); }
+    100% { transform: translate(0, 0); }
+}
