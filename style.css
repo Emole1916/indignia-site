@@ -1,46 +1,77 @@
-* {margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-html {scroll-behavior:smooth;}
-body {background:black;color:white;overflow:hidden;position:relative;}
-body.day {background:#a0d8f1;color:#111;}
-body.night {background:#111;color:white;}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-#loading{position:fixed;inset:0;background:black;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;animation:fadeOut 1s forwards;animation-delay:2.5s;}
-@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
+body {
+    background: #87ceeb;
+    overflow: hidden;
+    text-align: center;
+}
 
-header,nav{padding:10px;background:#111;text-align:center;}
-nav button{margin:5px;padding:8px 15px;border-radius:15px;border:none;color:white;background:red;cursor:pointer;}
-.card{margin:15px auto;padding:20px;max-width:400px;background:#111;border-radius:15px;opacity:0;transform:translateY(40px);transition:0.8s;}
-.card.show{opacity:1;transform:translateY(0);}
+body.night {
+    background: #0b0b0b;
+    color: white;
+}
 
-#yol{position:absolute;bottom:0;left:0;width:100%;height:400px;background:repeating-linear-gradient(to bottom,#555,#555 20px,#111 20px,#111 40px);z-index:-1;}
-#araba{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);font-size:60px;transition:left 0.1s;}
-.engel,.rakip{position:absolute;width:60px;height:100px;border-radius:10px;}
-.engel{background:gray;}
-.rakip{background:blue;}
-.rpm{width:100%;height:20px;background:#333;border-radius:10px;overflow:hidden;}
-#rpmBar{height:100%;width:0%;background:red;}
-#alev{font-size:30px;display:none;}
-#alev.active{display:block;}
-.grafik{width:300px;height:20px;background:#333;margin:15px auto;border-radius:10px;}
-#bar{height:100%;width:0%;background:lime;}
-#direksiyon{font-size:50px;margin:10px;transition:0.2s;}
-#toast{position:fixed;top:20px;right:20px;background:red;padding:15px;border-radius:10px;opacity:0;transition:0.5s;}
-#toast.show{opacity:1;}
-#debug{position:fixed;bottom:10px;left:10px;background:rgba(0,0,0,0.7);padding:10px;font-size:12px;display:none;}
-body.night #yol{background:repeating-linear-gradient(to bottom,#222,#222 20px,#111 20px,#111 40px);}
-body.day #yol{background:repeating-linear-gradient(to bottom,#888,#888 20px,#ccc 20px,#ccc 40px);}
-body.shake{animation:shake 0.1s infinite;}
-@keyframes shake{0%{transform:translate(0);}50%{transform:translate(2px,1px);}100%{transform:translate(-2px,-1px);}}
-button:active{transform:scale(0.95);}
+header, nav {
+    background: #111;
+    color: white;
+    padding: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    border-radius: 15px;
+    border: none;
+    background: red;
+    color: white;
+    cursor: pointer;
+}
+
+#yol {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #555,
+        #555 20px,
+        #111 20px,
+        #111 40px
+    );
+    z-index: -1;
+}
+
+#araba {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+}
+
+#araba img {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
 /* FARLAR */
 .far {
     position: absolute;
-    top: 10px;
-    width: 18px;
-    height: 10px;
+    top: 35px;
+    width: 20px;
+    height: 12px;
     background: rgba(255,255,200,0.2);
     filter: blur(4px);
     transition: 0.2s;
+    z-index: 3;
 }
 
 .far.sol { left: -15px; }
@@ -51,46 +82,86 @@ button:active{transform:scale(0.95);}
     box-shadow: 0 0 20px 8px rgba(255,255,200,0.9);
 }
 
-/* STOP (FREN) IŞIKLARI */
+/* STOP */
 .stop {
     position: absolute;
-    bottom: 10px;
-    width: 14px;
+    bottom: 20px;
+    width: 15px;
     height: 10px;
     background: rgba(255,0,0,0.3);
     filter: blur(3px);
-    transition: 0.2s;
+    z-index: 3;
 }
 
-.stop.sol { left: 0; }
-.stop.sag { right: 0; }
+.stop.sol { left: 10px; }
+.stop.sag { right: 10px; }
 
 .stop.active {
-    background: rgba(255,0,0,1);
+    background: red;
     box-shadow: 0 0 15px 6px red;
 }
 
-/* NEON ALT IŞIK */
+/* NEON */
 .neon {
     position: absolute;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+    width: 120px;
     height: 12px;
     background: cyan;
-    filter: blur(12px);
-    opacity: 0.2;
+    filter: blur(15px);
+    opacity: 0.3;
     transition: 0.3s;
+    z-index: 1;
 }
 
 .neon.active {
     opacity: 1;
-    box-shadow: 0 0 25px cyan;
+    box-shadow: 0 0 30px cyan;
 }
 
-/* GECE MODUNDA FAR OTOMATİK */
-body.night .far {
-    background: rgba(255,255,220,0.9);
-    box-shadow: 0 0 20px 8px rgba(255,255,200,1);
+/* PANEL */
+.panel {
+    position: absolute;
+    top: 120px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.rpm {
+    width: 200px;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+#rpmBar {
+    height: 100%;
+    width: 0%;
+    background: red;
+}
+
+#alev {
+    display: none;
+    font-size: 25px;
+}
+
+#alev.active {
+    display: block;
+}
+
+body.night #yol {
+    background: repeating-linear-gradient(
+        to bottom,
+        #222,
+        #222 20px,
+        #000 20px,
+        #000 40px
+    );
 }
