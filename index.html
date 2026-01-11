@@ -5,6 +5,12 @@
     <title>Opel Insignia</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+function butonTiklandi() {
+    document.getElementById("sonuc").innerHTML = "🚗 Modifiye AKTİF! +30 HP";
+}
+</script>
+
 <body>
 
 <header>
@@ -35,6 +41,11 @@
 
 <section class="mods">
     <h2>Modifiye Seçenekleri</h2>
+<button class="action-btn" onclick="butonTiklandi()">
+    MODİFİYEYİ AKTİF ET
+</button>
+
+<p id="sonuc"></p>
 
     <div class="mod-card">Stage 1 Yazılım</div>
     <div class="mod-card">Downpipe + Egzoz</div>
