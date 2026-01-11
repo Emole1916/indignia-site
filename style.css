@@ -32,3 +32,65 @@ body.day #yol{background:repeating-linear-gradient(to bottom,#888,#888 20px,#ccc
 body.shake{animation:shake 0.1s infinite;}
 @keyframes shake{0%{transform:translate(0);}50%{transform:translate(2px,1px);}100%{transform:translate(-2px,-1px);}}
 button:active{transform:scale(0.95);}
+/* FARLAR */
+.far {
+    position: absolute;
+    top: 10px;
+    width: 18px;
+    height: 10px;
+    background: rgba(255,255,200,0.2);
+    filter: blur(4px);
+    transition: 0.2s;
+}
+
+.far.sol { left: -15px; }
+.far.sag { right: -15px; }
+
+.far.acik {
+    background: rgba(255,255,220,1);
+    box-shadow: 0 0 20px 8px rgba(255,255,200,0.9);
+}
+
+/* STOP (FREN) IŞIKLARI */
+.stop {
+    position: absolute;
+    bottom: 10px;
+    width: 14px;
+    height: 10px;
+    background: rgba(255,0,0,0.3);
+    filter: blur(3px);
+    transition: 0.2s;
+}
+
+.stop.sol { left: 0; }
+.stop.sag { right: 0; }
+
+.stop.active {
+    background: rgba(255,0,0,1);
+    box-shadow: 0 0 15px 6px red;
+}
+
+/* NEON ALT IŞIK */
+.neon {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 12px;
+    background: cyan;
+    filter: blur(12px);
+    opacity: 0.2;
+    transition: 0.3s;
+}
+
+.neon.active {
+    opacity: 1;
+    box-shadow: 0 0 25px cyan;
+}
+
+/* GECE MODUNDA FAR OTOMATİK */
+body.night .far {
+    background: rgba(255,255,220,0.9);
+    box-shadow: 0 0 20px 8px rgba(255,255,200,1);
+}

@@ -183,3 +183,44 @@ carpismaKontrol();
 setInterval(()=>{if(skor>maxSkor){maxSkor=skor;document.getElementById("maxSkor").innerText=maxSkor;}},500);
 
 // Engeller ve rakipler için Stage farkı
+const farlar = document.querySelectorAll(".far");
+const stoplar = document.querySelectorAll(".stop");
+const neon = document.querySelector(".neon");
+
+// Gaz verince far + neon
+function isikKontrol() {
+    if (gazBasili) {
+        farlar.forEach(f => f.classList.add("acik"));
+        neon.classList.add("active");
+    } else {
+        farlar.forEach(f => f.classList.remove("acik"));
+        neon.classList.remove("active");
+    }
+
+    requestAnimationFrame(isikKontrol);
+}
+isikKontrol();
+
+// Fren (gaz bırakınca stop ışıkları)
+document.addEventListener("keyup", e => {
+    if (e.key === "ArrowUp" || e.key === "w") {
+        stoplar.forEach(s => s.classList.add("active"));
+        setTimeout(() => {
+            stoplar.forEach(s => s.classList.remove("active"));
+        }, 300);
+    }
+});
+
+// Gece farları otomatik aç
+function toggleDayNight(){
+    if(dayNight){
+        document.body.classList.remove("day");
+        document.body.classList.add("night");
+        farlar.forEach(f=>f.classList.add("acik"));
+    } else {
+        document.body.classList.remove("night");
+        document.body.classList.add("day");
+        farlar.forEach(f=>f.classList.remove("acik"));
+    }
+    dayNight = !dayNight;
+}
