@@ -1,73 +1,70 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    < title>Opel Insignia Performance Simulator</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Opel Insignia Pro Driving Simulator</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="day">
 
 <!-- LOADING -->
 <div id="loading">
-    <h1>OPEL INSIGNIA</h1>
-    <p>Performance Simulator</p>
+    <h1>OPEL INSIGNIA PRO SIMULATOR</h1>
+    <p>Yükleniyor...</p>
 </div>
 
 <header>
     <h1>Opel Insignia</h1>
-    <p>Modifiye Simülasyonu</p>
+    <p>Gelişmiş Driving Simulator</p>
+    <p id="puanTablo">En Yüksek Skor: <span id="maxSkor">0</span></p>
 </header>
 
 <nav>
-    <button onclick="temaDegistir()">🌙 / ☀️</button>
+    <button onclick="temaDegistir()">🌙/☀️</button>
     <button onclick="tamEkran()">⛶</button>
+    <button onclick="toggleDayNight()">🌞/🌙</button>
 </nav>
 
 <main>
+    <div id="yol"></div>
+    <div id="araba">🚗</div>
+    <div id="engel-container"></div>
+    <div id="rakip-container"></div>
 
-<section class="card">
-    <img src="insignia.jpg" alt="Opel Insignia">
-</section>
+    <section class="card stage">
+        <h2>Stage Seç</h2>
+        <button onclick="stageSec(1)">Stage 1</button>
+        <button onclick="stageSec(2)">Stage 2</button>
+        <button onclick="stageSec(3)">Stage 3</button>
+    </section>
 
-<section class="card stage">
-    <h2>Stage Seç</h2>
-    <button onclick="stageSec(1)">Stage 1</button>
-    <button onclick="stageSec(2)">Stage 2</button>
-</section>
-
-<section class="card action">
-    <button onclick="modifiyeBaslat()">🚀 Gaz Ver</button>
-</section>
-
-<section class="card gosterge">
-    <div class="rpm">
-        <div id="rpmBar"></div>
-    </div>
-
-    <div id="alev">🔥</div>
-
-    <p>Hız: <span id="hiz">0</span> km/h</p>
-
-    <div class="grafik">
-        <div id="bar"></div>
-    </div>
-
-    <canvas id="chart" width="320" height="150"></canvas>
-
-    <div id="direksiyon">🛞</div>
-
-    <p id="sonuc">Stage seçilmedi</p>
-</section>
+    <section class="card gosterge">
+        <div class="rpm"><div id="rpmBar"></div></div>
+        <div id="alev">🔥</div>
+        <p>Hız: <span id="hiz">0</span> km/h</p>
+        <p id="surusModu">Sürüş Modu: ECO</p>
+        <p>Motor: <span id="sicaklik">70</span>°C</p>
+        <p>0–100 km/h: <span id="zaman">0</span> sn</p>
+        <div class="grafik"><div id="bar"></div></div>
+        <canvas id="chart" width="320" height="150"></canvas>
+        <div id="direksiyon">🛞</div>
+        <p id="sonuc">Stage seçilmedi</p>
+    </section>
 
 </main>
 
 <div id="toast"></div>
-
 <div id="debug">
     Stage: <span id="dStage"></span><br>
     RPM: <span id="dRpm"></span><br>
-    Hız: <span id="dHiz"></span>
+    Hız: <span id="dHiz"></span><br>
+    Sıcaklık: <span id="dSicaklik"></span><br>
+    Skor: <span id="dSkor"></span>
 </div>
+
+<audio id="motorSes">
+    <source src="exhaust.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
 </body>
