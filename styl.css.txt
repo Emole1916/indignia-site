@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0e0e0e;
+    color: white;
+}
+
+/* HEADER */
+header {
+    background: black;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 2px solid red;
+}
+
+header h1 {
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+/* MENU */
+nav {
+    background: #111;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: #ccc;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: red;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero img {
+    width: 550px;
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255,0,0,0.6);
+}
+
+/* INFO */
+.info {
+    background: #151515;
+    margin: 40px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+}
+
+.info h2 {
+    color: red;
+}
+
+/* MODS */
+.mods {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.mod-card {
+    display: inline-block;
+    background: #1b1b1b;
+    padding: 20px 30px;
+    margin: 15px;
+    border-left: 4px solid red;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.mod-card:hover {
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+    background: black;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #aaa;
+}
+.action-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255,0,0,0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255,0,0,1);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+#sonuc {
+    margin-top: 20px;
+    font-size: 20px;
+    color: lime;
+    font-weight: bold;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px lime; }
+    to { text-shadow: 0 0 20px lime; }
+}
